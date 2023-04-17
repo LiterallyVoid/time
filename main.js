@@ -9,6 +9,26 @@ function updateText(id, text) {
 	if (el.textContent == "" || el.textContent != text) el.textContent = text;
 }
 
+function updateTextAnimated(id, text) {
+	const el = document.getElementById(id);
+
+	if (el.textContent == "") {
+		el.textContent = text;
+		return;
+	}
+
+	if (el.textContent == text) {
+		return;
+	}
+
+	el.textContent = text;
+
+	el.style.animation = 'none';
+	el.offsetHeight;
+
+	el.style.animation = '1s fade';
+}
+
 function setEventName(name) {
 	updateText("event-name", name);
 
@@ -50,8 +70,8 @@ function setTwoDigits(id_prefix, num) {
 	const l = Math.floor(num / 10);
 	const r = num % 10;
 
-	updateText(id_prefix + "l", l);
-	updateText(id_prefix + "r", r);
+	updateTextAnimated(id_prefix + "l", l);
+	updateTextAnimated(id_prefix + "r", r);
 }
 
 function setLong(id_prefix, num) {
