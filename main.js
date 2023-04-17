@@ -24,6 +24,8 @@ function updateTextAnimated(id, text) {
 	el.textContent = text;
 
 	el.style.animation = 'none';
+
+	// https://stackoverflow.com/questions/6268508/restart-animation-in-css3-any-better-way-than-removing-the-element
 	el.offsetHeight;
 
 	el.style.animation = '1s fade';
