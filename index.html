@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>µTime</title>
+		<style>
+			@font-face {
+				font-family: "D-DIN";
+
+				src: url("./font/D-DINExp.woff") format("woff");
+			}
+
+			@font-face {
+				font-family: "D-DIN";
+				font-weight: bold;
+
+				src: url("./font/D-DINExp-Bold.woff") format("woff");
+			}
+
+			:root {
+				background-color: #FFF;
+				font-family: "D-DIN", sans-serif;
+				font-variant-numeric: tabular-nums;
+			}
+
+			body {
+				margin: 0;
+			}
+
+			.vertical-flex {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				min-height: 100vh;
+			}
+
+			.timer {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+			}
+
+			.timer-section {
+				flex-basis: auto;
+
+				font-size: 9vw;
+
+				display: inline-block;
+
+				color: #614;
+
+				font-weight: bold;
+			}
+
+			.prefix {
+				opacity: 50%;
+				font-weight: normal;
+			}
+
+			.label {
+				font-size: 30%;
+				align-self: end;
+				margin: 0.4;
+				font-size: 30%;
+				align-self: end;
+				margin: 0.6em 0;
+
+				opacity: 50%;
+
+				margin-right: 0.4em;
+			}
+
+			.suffix {
+				opacity: 50%;
+			}
+
+			.timer-section:last-child > .comma {
+				display: none;
+			}
+
+			.digit.left, .digit.right {
+				display: inline-block;
+				width: 0.55em;
+			}
+
+			.digit.left {
+				text-align: right;
+			}
+
+			.digit.right {
+				text-align: left;
+			}
+
+			.hidden {
+				display: none !important;
+			}
+
+			.event {
+				font-size: 2vw;
+				display: flex;
+				justify-content: center;
+
+				flex-direction: row;
+
+				color: #614;
+
+				font-weight: bold;
+			}
+
+			.event__prefix {
+				opacity: 50%;
+				font-weight: normal;
+				margin-right: 0.3em;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="vertical-flex">
+			<div class="timer hidden">
+				<!-- Sections are display: inline elements,
+					 so they have significant whitespace.
+
+					 Maybe this could've been engineered better,
+					 or I could've used react,
+					 but I'm leaving that for the future.
+				  -->
+				<div class="timer-section"><span class="prefix" id="prefix">T-</span></div>
+				<div class="timer-section" id="years-section"><span class="digit" id="years"></span><span class="label">year<span id="years-plural">s</span>, </span></div>
+				<div class="timer-section" id="months-section"><span class="digit" id="months"></span><span class="label">month<span id="months-plural">s</span>, </span></div>
+				<div class="timer-section" id="days-section"><span class="digit" id="days"></span><span class="label">day<span id="days-plural">s</span>, </span></div>
+ 				<div class="timer-section"><span class="digit left" id="h-l"></span><span class="digit right" id="h-r"></span><span class="suffix">:</span>
+				</div>
+ 				<div class="timer-section"><span class="digit left" id="m-l"></span><span class="digit right" id="m-r"></span><span class="suffix">:</span></div>
+ 				<div class="timer-section"><span class="digit left" id="s-l"></span><span class="digit right" id="s-r"></span></div>
+			</div>
+			<div class="event" id="event">
+				<span class="event__prefix" id="event-prefix"></span><span class="event__name" id="event-name"></span>
+			</div>
+		</div>
+		<script src="main.js" type="module"></script>
+	</body>
+</html>
